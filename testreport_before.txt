@@ -1,0 +1,84 @@
+Group Name: P2FixAnAppDotNetCode.Tests
+Group By: Hierarchy
+Group Full Name: P2FixAnAppDotNetCode.Tests
+Duration: 0:00:00.098
+7 test(s) failed
+0 test(s) skipped
+1 test(s) passed
+
+Result1 Name:	P2FixAnAppDotNetCode.Tests.CartTests.AddItemInCart
+Result1 Outcome:	Failed
+Result1 Duration:	0:00:00.003
+Result1 StackTrace:	at P2FixAnAppDotNetCode.Tests.CartTests.AddItemInCart() in C:\Users\Jon Karlsen\Source\Repos\DotNetEnglishP2\P2FixAnAppDotNetCode.Tests\CartTests.cs:line 25
+Result1 Message:	Assert.NotEmpty() Failure
+Result1 StandardOutput:
+Result1 StandardError:
+
+Result2 Name:	P2FixAnAppDotNetCode.Tests.CartTests.FindProductInCartLines
+Result2 Outcome:	Failed
+Result2 Duration:	0:00:00.009
+Result2 StackTrace:	at P2FixAnAppDotNetCode.Tests.CartTests.FindProductInCartLines() in C:\Users\Jon Karlsen\Source\Repos\DotNetEnglishP2\P2FixAnAppDotNetCode.Tests\CartTests.cs:line 74
+Result2 Message:	Assert.NotNull() Failure
+Result2 StandardOutput:
+Result2 StandardError:
+
+Result3 Name:	P2FixAnAppDotNetCode.Tests.CartTests.GetAverageValue
+Result3 Outcome:	Failed
+Result3 Duration:	0:00:00.002
+Result3 StackTrace:	at P2FixAnAppDotNetCode.Tests.CartTests.GetAverageValue() in C:\Users\Jon Karlsen\Source\Repos\DotNetEnglishP2\P2FixAnAppDotNetCode.Tests\CartTests.cs:line 44
+Result3 Message:	
+Assert.Equal() Failure
+Expected: 304.993333333333
+Actual:   0
+Result3 StandardOutput:
+Result3 StandardError:
+
+Result4 Name:	P2FixAnAppDotNetCode.Tests.CartTests.GetTotalValue
+Result4 Outcome:	Failed
+Result4 Duration:	0:00:00.028
+Result4 StackTrace:	at P2FixAnAppDotNetCode.Tests.CartTests.GetTotalValue() in C:\Users\Jon Karlsen\Source\Repos\DotNetEnglishP2\P2FixAnAppDotNetCode.Tests\CartTests.cs:line 62
+Result4 Message:	
+Assert.Equal() Failure
+Expected: 1085
+Actual:   0
+Result4 StandardOutput:
+Result4 StandardError:
+
+Result5 Name:	P2FixAnAppDotNetCode.Tests.LanguageServiceTests.SetCulture
+Result5 Outcome:	Failed
+Result5 Duration:	0:00:00.011
+Result5 StackTrace:	at P2FixAnAppDotNetCode.Tests.LanguageServiceTests.SetCulture() in C:\Users\Jon Karlsen\Source\Repos\DotNetEnglishP2\P2FixAnAppDotNetCode.Tests\LanguageServiceTests.cs:line 22
+Result5 Message:	
+Assert.Same() Failure
+Expected: fr
+Actual:
+Result5 StandardOutput:
+Result5 StandardError:
+
+Result6 Name:	P2FixAnAppDotNetCode.Tests.ProductServiceTests.GetProductById
+Result6 Outcome:	Failed
+Result6 Duration:	0:00:00.012
+Result6 StackTrace:	at P2FixAnAppDotNetCode.Tests.ProductServiceTests.GetProductById() in C:\Users\Jon Karlsen\Source\Repos\DotNetEnglishP2\P2FixAnAppDotNetCode.Tests\ProductServiceTests.cs:line 75
+Result6 Message:	System.NullReferenceException : Object reference not set to an instance of an object.
+Result6 StandardOutput:
+Result6 StandardError:
+
+Result7 Name:	P2FixAnAppDotNetCode.Tests.ProductServiceTests.UpdateProductQuantities
+Result7 Outcome:	Failed
+Result7 Duration:	0:00:00.013
+Result7 StackTrace:	at P2FixAnAppDotNetCode.Tests.ProductServiceTests.UpdateProductQuantities() in C:\Users\Jon Karlsen\Source\Repos\DotNetEnglishP2\P2FixAnAppDotNetCode.Tests\ProductServiceTests.cs:line 45
+Result7 Message:	
+Assert.Equal() Failure
+Expected: 9
+Actual:   10
+Result7 StandardOutput:
+Result7 StandardError:
+
+Result8 Name:	P2FixAnAppDotNetCode.Tests.ProductServiceTests.Product
+Result8 Outcome:	Passed
+Result8 Duration:	0:00:00.02
+Result8 StackTrace:
+Result8 Message:
+Result8 StandardOutput:
+Result8 StandardError:
+
