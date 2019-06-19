@@ -1,5 +1,5 @@
 ## 1. Major changes
-#### 1.1 SetCulture
+#### 1.1 SetCulture()
 **60431d5:** The application now properly switches between languages, and passes the appropriate test.
 ```diff
         modified:   P2FixAnAppDotNetCode/Models/Services/LanguageService.cs
@@ -18,6 +18,16 @@
             return culture;
         }
 ```
+
+#### 1.2 AddItem()
+```diff
+        modified:   DotNetEnglishP2\P2FixAnAppDotNetCode\Models\Cart.cs
+```
+
+**Question:** What the shell is a "cart line"?
+**Answer:** The Cart Line class represents a line in the shopping cart. It represents something that a visitor has added to their cart, along with the quantity of the item that was added to the cart. It also represents the position of the line relative to other lines in the cart (for controlling the order the lines appear when the lines are displayed).
+
+(From https://doc.sitecore.com/developers/90/sitecore-experience-commerce/en/cart-domain-model.html -- based on the custom CartLine implementation in this solution, this seems accurate enough for an at least preliminary understanding).
 
 ## 2. Minor changes
 #### 2.1 FIX/TYPO
@@ -55,3 +65,14 @@
 ```
 
 **Note:** Unfamiliarity with MVC application architecture led to some initial confusion, but this was fairly easily solved by poking around until I got the gist of the language selection control flow.
+
+## 3. Trivial changes
+#### 3.1 FIX/TYPO (comment)
+```diff
+        modified:   DotNetEnglishP2\P2FixAnAppDotNetCode\Models\Cart.cs
+
+        /// <summary>
+-       /// Read-only property for dispaly only
++       /// Read-only property for display only
+        /// </summary>
+```
