@@ -27,7 +27,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         }
 
         /// <summary>
-        /// Get a product form the inventory by its id
+        /// Get a product from the inventory by its id
         /// </summary>
         public Product GetProductById(int id)
         {
