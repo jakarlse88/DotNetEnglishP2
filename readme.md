@@ -72,7 +72,17 @@
         modified:   DotNetEnglishP2\P2FixAnAppDotNetCode\Models\Cart.cs
 
         /// <summary>
--       /// Read-only property for dispaly only
-+       /// Read-only property for display only
+- 30       /// Read-only property for dispaly only
++ 30       /// Read-only property for display only
+        /// </summary>
+```
+
+#### 3.1 FIX/TYPO (comment)
+```diff
+        modified:   DotNetEnglishP2\P2FixAnAppDotNetCode\Models\Cart.cs
+
+        /// <summary>
+- 20        /// Get all product from the inventory
++ 20        /// Get all products from the inventory
         /// </summary>
 ```
