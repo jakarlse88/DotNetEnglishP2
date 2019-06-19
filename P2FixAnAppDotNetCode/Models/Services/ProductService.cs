@@ -17,7 +17,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         }
 
         /// <summary>
-        /// Get all product from the inventory
+        /// Get all products from the inventory
         /// </summary>
         public Product[] GetAllProducts()
         {
