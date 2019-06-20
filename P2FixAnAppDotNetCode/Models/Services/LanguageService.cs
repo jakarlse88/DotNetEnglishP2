@@ -20,6 +20,9 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// <summary>
         /// Set the culture
         /// </summary>
+        // JON KARLSEN: 
+        // Implemented this method. As the incoming string values are hard-coded
+        // and the method defaults to English, there is no need for validation. 
         public string SetCulture(string language)
         {
             // Default language is "en", french is "fr" and spanish is "es".

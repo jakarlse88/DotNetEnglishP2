@@ -22,6 +22,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// </summary>
         // JON KARLSEN:
         // Changed the return type of GetAllProducts() from array to List<Product>.
+        // Corrected "product" to "products" above. 
         public List<Product> GetAllProducts()
         {
             return _productRepository.GetAllProducts();
@@ -30,6 +31,8 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// <summary>
         /// Get a product from the inventory by its id
         /// </summary>
+        // JON KARLSEN:
+        // Corrected "form" to "from" above. 
         public Product GetProductById(int id)
         {
             // TODO implement the method
