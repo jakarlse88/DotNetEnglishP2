@@ -32,10 +32,14 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         /// <summary>
         /// Get all products from the inventory
         /// </summary>
-        public Product[] GetAllProducts()
+        // JON KARLSEN:
+        // Changed return type from Product[] to List<Product>.
+        public List<Product> GetAllProducts()
         {
             List<Product> list = _products.Where(p => p.Stock > 0).OrderBy(p => p.Name).ToList();
-            return list.ToArray();
+            // JON KARLSEN:
+            // Changed return statement to reflect return type change. 
+            return list;
         }
 
         /// <summary>

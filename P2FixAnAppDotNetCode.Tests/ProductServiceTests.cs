@@ -22,8 +22,14 @@ namespace P2FixAnAppDotNetCode.Tests
 
             var products = productService.GetAllProducts();
 
-            //Assert.IsType<List<Product>>(products);
-            Assert.IsType<Product[]>(products);
+            // JON KARLSEN:
+            // Have changed this unit test despite being directed not to do so as
+            // the instruction in the ProductService/GetAllProducts() method specifically called 
+            // for its return type to be changed to List<T> AND for that change to be propagated 
+            // throughout the app. The below inclusion of a relevant assertion seems to support this
+            // decision.
+            Assert.IsType<List<Product>>(products);
+            //Assert.IsType<Product[]>(products);
 
         }
 

@@ -19,15 +19,9 @@
         }
 ```
 
-#### 1.2 AddItem()
-```diff
-        modified:   DotNetEnglishP2\P2FixAnAppDotNetCode\Models\Cart.cs
-```
+#### 1.2 GetAllProducts()
+Changed the return type of GetAllProducts() from Product[] to List<Product> and propagated the change throughout the application. The relevant test now passes.   
 
-**Question:** What the shell is a "cart line"?
-**Answer:** The Cart Line class represents a line in the shopping cart. It represents something that a visitor has added to their cart, along with the quantity of the item that was added to the cart. It also represents the position of the line relative to other lines in the cart (for controlling the order the lines appear when the lines are displayed).
-
-(From https://doc.sitecore.com/developers/90/sitecore-experience-commerce/en/cart-domain-model.html -- based on the custom CartLine implementation in this solution, this seems accurate enough for an at least preliminary understanding).
 
 ## 2. Minor changes
 #### 2.1 FIX/TYPO
