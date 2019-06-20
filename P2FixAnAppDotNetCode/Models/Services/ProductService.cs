@@ -18,7 +18,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         }
 
         /// <summary>
-        /// Get all product from the inventory
+        /// Get all products from the inventory
         /// </summary>
         // JON KARLSEN:
         // Changed the return type of GetAllProducts() from array to List<Product>.
@@ -28,7 +28,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         }
 
         /// <summary>
-        /// Get a product form the inventory by its id
+        /// Get a product from the inventory by its id
         /// </summary>
         public Product GetProductById(int id)
         {

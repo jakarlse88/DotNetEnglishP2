@@ -61,10 +61,12 @@ Changed the return type of GetAllProducts() from Product[] to List<Product> and 
 **Note:** Unfamiliarity with MVC application architecture led to some initial confusion, but this was fairly easily solved by poking around until I got the gist of the language selection control flow.
 
 ## 3. Trivial changes
-#### 3.1 FIX/TYPO (comment)
+#### 3.1 FIX/TYPO: Cart.cs
+**f5339c4:**
 ```diff
         modified:   DotNetEnglishP2\P2FixAnAppDotNetCode\Models\Cart.cs
 
+<<<<<<< HEAD
         /// <summary>
 - 30       /// Read-only property for dispaly only
 + 30       /// Read-only property for display only
@@ -79,4 +81,22 @@ Changed the return type of GetAllProducts() from Product[] to List<Product> and 
 - 20        /// Get all product from the inventory
 + 20        /// Get all products from the inventory
         /// </summary>
+=======
+- 12      /// Read-only property for dispaly only
++ 12      /// Read-only property for display only
+```
+
+#### 3.2 FIX/TYPO: ProductServices.cs
+```diff
+        modified:   DotNetEnglishP2\P2FixAnAppDotNetCode\Models\Services\ProductService.cs
+- 30    /// Get a product form the inventory by its id
++ 30    /// Get a product from the inventory by its id  
+```
+
+#### 3.3 FIX/TYPO: ProductServices.cs
+```diff
+        modified:   DotNetEnglishP2\P2FixAnAppDotNetCode\Models\Services\ProductService.cs
+- 20    /// Get all product from the inventory
++ 20    /// Get all products from the inventory
+>>>>>>> chores
 ```
