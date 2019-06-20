@@ -33,10 +33,17 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// </summary>
         // JON KARLSEN:
         // Corrected "form" to "from" above. 
+        // Implemented the method.
         public Product GetProductById(int id)
         {
-            // TODO implement the method
-            return null;
+            // Get the list of all products
+            List<Product> productList = _productRepository.GetAllProducts();
+
+            // Find the product in the list by ID.
+            // If a product by that ID is not found, product is null.
+            Product product = productList.Find(prod => prod.Id == id);
+            
+            return product;
         }
 
         /// <summary>

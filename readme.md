@@ -19,6 +19,12 @@ _17132b7:_ Changed the return type of GetAllProducts() from Product[] to List<Pr
         P2FixAnAppDotNetCode/Models/Services/ProductService.cs
 ```
 
+### 1.3 GetProductById()
+_3627abd:_ Implemented GetProductById().
+
+```
+        modified:    P2FixAnAppDotNetCode\Models\Services\ProductService.cs
+```
 
 ## 2. Minor changes
 #### 2.1 FIX/TYPO
