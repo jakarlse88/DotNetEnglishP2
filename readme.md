@@ -19,11 +19,17 @@ _17132b7:_ Changed the return type of GetAllProducts() from Product[] to List<Pr
         P2FixAnAppDotNetCode/Models/Services/ProductService.cs
 ```
 
-### 1.3 GetProductById()
+#### 1.3 GetProductById()
 _3627abd:_ Implemented GetProductById().
 
 ```
         modified:    P2FixAnAppDotNetCode\Models\Services\ProductService.cs
+```
+
+#### 1.4 AddItem()
+_06ed3ba:_ Added necessary class members and properties; changed GetCartLineList() to correct erronuous behaviour; implemented FindProductInCartLines(), and AddItem().
+```diff
+        modified: P2FixAnAppDotNetCode/Models/Cart.cs
 ```
 
 ## 2. Minor changes
