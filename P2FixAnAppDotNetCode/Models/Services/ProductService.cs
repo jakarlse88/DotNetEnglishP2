@@ -17,6 +17,8 @@ namespace P2FixAnAppDotNetCode.Models.Services
             _orderRepository = orderRepository;
         }
 
+        public IProductRepository ProductRepository => _productRepository;
+
         /// <summary>
         /// Get all products from the inventory
         /// </summary>
@@ -25,25 +27,18 @@ namespace P2FixAnAppDotNetCode.Models.Services
         // Corrected "product" to "products" above. 
         public List<Product> GetAllProducts()
         {
-            return _productRepository.GetAllProducts();
+            return ProductRepository.GetAllProducts();
         }
 
         /// <summary>
         /// Get a product from the inventory by its id
         /// </summary>
         // JON KARLSEN:
-        // Corrected "form" to "from" above. 
-        // Implemented the method.
+        // Implemented this method in the product repository to avoid having to 
+        // retrieve a potentially very sizeable list, in the case of a real-life database.
         public Product GetProductById(int id)
         {
-            // Get the list of all products
-            List<Product> productList = _productRepository.GetAllProducts();
-
-            // Find the product in the list by ID.
-            // If a product by that ID is not found, product is null.
-            Product product = productList.Find(prod => prod.Id == id);
-            
-            return product;
+            return ProductRepository.GetProductById(id);
         }
 
         /// <summary>
