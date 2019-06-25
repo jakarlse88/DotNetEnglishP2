@@ -8,25 +8,26 @@ namespace P2FixAnAppDotNetCode.Models
     /// </summary>
     public class Cart : ICart
     {
-        private List<CartLine> cartLineList;
-        private int currentOrderLineId;
+        private List<CartLine> _cartLineList;
+        private int _currentOrderLineId;
 
         /// <summary>
         /// Read-only property for display only
         /// </summary>
         // JON KARLSEN:
         // Corrected "dispaly" to "display" above. 
-        public IEnumerable<CartLine> Lines => GetCartLineList();
+        // Note: this method currently exists only to satisfy tests and should not be used
+        public List<CartLine> Lines => GetCartLineList();
 
-        private List<CartLine> CartLineList { get => cartLineList; set => cartLineList = value; }
-        public int CurrentOrderLineId { get => currentOrderLineId; set => currentOrderLineId = value; }
+        private int CurrentOrderLineId { get => _currentOrderLineId; set => _currentOrderLineId = value; }
+        private List<CartLine> CartLineList { get => _cartLineList; }
 
-        // JON KARLSEN:
+        // JON KARLSEN: 
         // Add a custom default ctor to initialise the list of cartlines,
         // and to keep track of the current orderline id.
         public Cart()
         {
-            CartLineList = new List<CartLine>();
+            _cartLineList = new List<CartLine>();
             CurrentOrderLineId = 0;
         }
 
@@ -36,10 +37,10 @@ namespace P2FixAnAppDotNetCode.Models
         /// <returns></returns>
         // JON KARLSEN:
         // This method previously always returned a new list;
-        // changed it to return the one list maintained by the class.
+        // changed it to return a shallow copy of the one list maintained by the class.
         private List<CartLine> GetCartLineList()
         {
-            return CartLineList;
+            return CartLineList.ToList();
         }
 
         private int GetCurrentOrderLineIdAndIncrement()
@@ -52,30 +53,27 @@ namespace P2FixAnAppDotNetCode.Models
         /// Adds a product in the cart or increment its quantity in the cart if already added
         /// </summary>
         // JON KARLSEN:
-        // 
         public void AddItem(Product product, int quantity)
         {
-            // Attempt to find the index of the given product in the cart. 
-            // If the product is present, the index will be > -1.
-            int cartLineIdx = GetCartLineList().FindIndex(item => item.Product.Id == product.Id);
+            // Attempt to find a given product in the cart -- 
+            // if it's not found, this variable will be null
+            CartLine cartLine = GetCartLineList().FirstOrDefault(item => item.Product.Id == product.Id);
 
-            // Product is present already in cart, increment quantity
-            if (cartLineIdx > -1) 
+            // Product is already present in cart, increment quantity
+            if (cartLine != null) 
             {
-                cartLineList[cartLineIdx].Quantity += quantity;
+                cartLine.Quantity += quantity;
             }
             // Product is not present in cart; create and populate a new CartLine object
             // with relevant data and add to the list.
             else 
             {
-                CartLine cartLine = new CartLine
+                CartLineList.Add(new CartLine
                 {
                     OrderLineId = GetCurrentOrderLineIdAndIncrement(),
                     Product = product,
                     Quantity = quantity
-                };
-
-                cartLineList.Add(cartLine);
+                });
             }
         }
 
@@ -115,7 +113,7 @@ namespace P2FixAnAppDotNetCode.Models
             // Get the list of cartlines
             List<CartLine> cartLineList = GetCartLineList();
 
-            // Get the cartline whose product matches the ID we're looking for
+            // Get the cartline whose product ID matches the ID we're looking for
             CartLine cartLine =
                 cartLineList.FirstOrDefault(line => line.Product.Id == productId);
 
@@ -127,18 +125,21 @@ namespace P2FixAnAppDotNetCode.Models
         /// <summary>
         /// Get a specifid cartline by its index
         /// </summary>
+        // JON KARLSEN:
+        // Changed the return statement to use GetCartLineList() rather than Lines
         public CartLine GetCartLineByIndex(int index)
         {
-            return Lines.ToArray()[index];
+            return GetCartLineList().ToArray()[index];
         }
 
         /// <summary>
         /// Clears a the cart of all added products
         /// </summary>
+        // JON KARLSEN:
+        // Changed this method to access the cartline list through property
         public void Clear()
         {
-            List<CartLine> cartLines = GetCartLineList();
-            cartLines.Clear();
+            CartLineList.Clear();
         }
     }
 
