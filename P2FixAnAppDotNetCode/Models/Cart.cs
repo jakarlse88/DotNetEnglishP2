@@ -16,7 +16,8 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         // JON KARLSEN:
         // Corrected "dispaly" to "display" above. 
-        // Note: this method currently exists only to satisfy tests and should not be used
+        // Note: this method currently exists only to satisfy tests and should not be used --
+        // should to begin with not have been publicly exposed
         public List<CartLine> Lines => GetCartLineList();
 
         private int CurrentOrderLineId { get => _currentOrderLineId; set => _currentOrderLineId = value; }
@@ -88,19 +89,57 @@ namespace P2FixAnAppDotNetCode.Models
         /// <summary>
         /// Get total value of a cart
         /// </summary>
+        // JON KARLSEN:
+        // Implement the method
         public double GetTotalValue()
         {
-            // TODO implement the method
-            return 0.0;
+            List<CartLine> cartLines = GetCartLineList();
+            double result = 0;
+
+            // If the cart is empty, the result is given
+            if (cartLines.Count > 0)
+            {
+                // Iterate over the contents of the cart and add to the total
+                // each product's price times its quantity in the cart
+                foreach (CartLine line in cartLines)
+                {
+                    result += line.Product.Price * line.Quantity;
+                }
+            }
+
+            return result;
         }
 
         /// <summary>
         /// Get average value of a cart
         /// </summary>
+        // JON KARLSEN:
+        // Implemented the method
         public double GetAverageValue()
         {
-            // TODO implement the method
-            return 0.0;
+            // Get the current cart contents
+            List<CartLine> cartLines = GetCartLineList();
+            double result = 0;
+            int totalProducts = 0;
+
+            // If the cart is empty, the result is given
+            if (cartLines.Count > 0)
+            {
+                foreach (CartLine line in cartLines)
+                {
+                    // Iterate over the contents of the cart and add to the total
+                    // each product's price times its quantity in the cart
+                    result += line.Product.Price * line.Quantity;
+
+                    // Keep track of the total quantity of products in the cart
+                    totalProducts += line.Quantity;
+                }  
+
+                // Divide the total value by the quantity of products to get the price average
+                result /= totalProducts;
+            }
+
+            return result;
         }
 
         /// <summary>
