@@ -10,7 +10,9 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
     {
         private static List<Product> _products;
 
-        public static List<Product> Products { get => _products; set => _products = value; }
+        // JON KARLSEN: 
+        // Changed this property to private
+        private static List<Product> Products { get => _products; set => _products = value; }
 
         public ProductRepository()
         {
@@ -50,7 +52,7 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         public void UpdateProductStocks(int productId, int quantityToRemove)
         {
             Product product = Products.First(p => p.Id == productId);
-            product.Stock = product.Stock - quantityToRemove;
+            product.Stock -= quantityToRemove; // Change to compound assignment
 
             if (product.Stock == 0)
                 Products.Remove(product);

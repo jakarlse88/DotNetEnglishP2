@@ -20,9 +20,22 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         // JON KARLSEN:
         // Corrected "dispaly" to "display" above. 
-        // Note: this method currently exists only to satisfy tests (which cannot be changed)
-        // and should not be used. 
-        public List<CartLine> Lines => GetCartLineList();
+        public List<CartLine> Lines 
+        {
+            get
+            {
+                // Clone the elements of our cartlines list to a new
+                // list and return it
+                return CartLineList
+                    .Select(line => new CartLine
+                        {
+                            OrderLineId = line.OrderLineId,
+                            Product = line.Product,
+                            Quantity = line.Quantity
+                        })
+                    .ToList();
+            }
+        }
 
         // JON KARLSEN:
         // Implemented this property for class-internal use. 
@@ -37,17 +50,18 @@ namespace P2FixAnAppDotNetCode.Models
         }
 
         /// <summary>
-        /// Return a shallow copy of the actual cartline list
+        /// Return a deep copy of the actual cartline list
         /// </summary>
         /// <returns></returns>
         // JON KARLSEN:
         // This method previously always returned a new list;
-        // changed it to return a shallow copy of the one list maintained by the class 
+        // changed it to return a deep copy of the one list maintained by the class 
         // to maintain encapsulation. 
-        private List<CartLine> GetCartLineList()
-        {
-            return CartLineList.ToList();
-        }
+        //private List<CartLine> GetCartLineList()
+        //{
+            
+        //}
+        // REMOVED -- folded into read-only property
 
         /// <summary>
         /// Adds a product in the cart or increment its quantity in the cart if already added
@@ -182,6 +196,9 @@ namespace P2FixAnAppDotNetCode.Models
         }
     }
 
+    /// <summary>
+    /// The CartLine class.
+    /// </summary>
     public class CartLine
     {
         public int OrderLineId { get; set; }
