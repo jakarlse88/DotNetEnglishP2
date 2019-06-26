@@ -8,6 +8,11 @@ namespace P2FixAnAppDotNetCode.Models
     /// </summary>
     public class Cart : ICart
     {
+        /// <summary>
+        /// The list of cart lines -- ie. the orders in the cart.
+        /// </summary>
+        // JON KARLSEN:
+        // Implemented this.
         private List<CartLine> _cartLineList;
 
         /// <summary>
@@ -15,10 +20,12 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         // JON KARLSEN:
         // Corrected "dispaly" to "display" above. 
-        // Note: this method currently exists only to satisfy tests and should not be used --
-        // should to begin with not have been publicly exposed
+        // Note: this method currently exists only to satisfy tests (which cannot be changed)
+        // and should not be used. 
         public List<CartLine> Lines => GetCartLineList();
 
+        // JON KARLSEN:
+        // Implemented this property for class-internal use. 
         private List<CartLine> CartLineList { get => _cartLineList; }
 
         // JON KARLSEN: 
@@ -30,12 +37,13 @@ namespace P2FixAnAppDotNetCode.Models
         }
 
         /// <summary>
-        /// Return the actual cartline list
+        /// Return a shallow copy of the actual cartline list
         /// </summary>
         /// <returns></returns>
         // JON KARLSEN:
         // This method previously always returned a new list;
-        // changed it to return a shallow copy of the one list maintained by the class.
+        // changed it to return a shallow copy of the one list maintained by the class 
+        // to maintain encapsulation. 
         private List<CartLine> GetCartLineList()
         {
             return CartLineList.ToList();
@@ -50,7 +58,7 @@ namespace P2FixAnAppDotNetCode.Models
         {
             // Attempt to find a given product in the cart -- 
             // if it's not found, this variable will be null
-            CartLine cartLine = GetCartLineList().FirstOrDefault(item => item.Product.Id == product.Id);
+            CartLine cartLine = CartLineList.FirstOrDefault(item => item.Product.Id == product.Id);
 
             // Product is already present in cart, increment quantity
             if (cartLine != null) 
@@ -85,7 +93,7 @@ namespace P2FixAnAppDotNetCode.Models
         // Implement the method
         public double GetTotalValue()
         {
-            List<CartLine> cartLines = GetCartLineList();
+            List<CartLine> cartLines = CartLineList;
             double result = 0;
 
             // If the cart is empty, the result is given
@@ -110,7 +118,7 @@ namespace P2FixAnAppDotNetCode.Models
         public double GetAverageValue()
         {
             // Get the current cart contents
-            List<CartLine> cartLines = GetCartLineList();
+            List<CartLine> cartLines = CartLineList;
             double result = 0;
             int totalProducts = 0;
 
@@ -142,7 +150,7 @@ namespace P2FixAnAppDotNetCode.Models
         public Product FindProductInCartLines(int productId)
         {
             // Get the list of cartlines
-            List<CartLine> cartLineList = GetCartLineList();
+            List<CartLine> cartLineList = CartLineList;
 
             // Get the cartline whose product ID matches the ID we're looking for
             CartLine cartLine =
@@ -160,7 +168,7 @@ namespace P2FixAnAppDotNetCode.Models
         // Changed the return statement to use GetCartLineList() rather than Lines
         public CartLine GetCartLineByIndex(int index)
         {
-            return GetCartLineList().ToArray()[index];
+            return CartLineList.ToArray()[index];
         }
 
         /// <summary>
@@ -181,3 +189,4 @@ namespace P2FixAnAppDotNetCode.Models
         public int Quantity { get; set; }
     }
 }
+
