@@ -22,36 +22,40 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// <summary>
         /// Get all products from the inventory
         /// </summary>
+        /// <returns>A List<Product> containing all products in the inventory.</returns>
         // JON KARLSEN:
         // Changed the return type of GetAllProducts() from array to List<Product>.
         // Corrected "product" to "products" above. 
         public List<Product> GetAllProducts()
         {
-            return ProductRepository.GetAllProducts();
+            return _productRepository.GetAllProducts();
         }
 
         /// <summary>
-        /// Get a product from the inventory by its id
+        /// Attempts to find a product in the inventory by its ID. Returns the 
+        /// product if found, else returns null.
         /// </summary>
+        /// <param name="id">The ID of the product to find.</param>
+        /// <returns>The located product, or null.</returns>
         // JON KARLSEN:
         // Implemented this method in the product repository to avoid having to 
-        // retrieve a potentially very sizeable list, in the case of a real-life database.
+        // retrieve a potentially very sizeable list every time a product is searched for, 
+        // in the case of a real-life database.
         public Product GetProductById(int id)
         {
-            return ProductRepository.GetProductById(id);
+            return _productRepository.GetProductById(id);
         }
 
         /// <summary>
-        /// Update the quantities left for each product in the inventory depending of ordered the quantities
+        /// Update the quantities left for each product in the inventory depending on their ordered quantities
         /// </summary>
+        /// <param name="cart">The cart whose products and quantities will be used to update the inventory.</param>
         public void UpdateProductQuantities(Cart cart)
         {
-            // TODO implement the method
             // update product inventory by using _productRepository.UpdateProductStocks() method.
-
             foreach (CartLine line in cart.Lines)
             {
-                ProductRepository.UpdateProductStocks(line.Product.Id, line.Quantity);
+                _productRepository.UpdateProductStocks(line.Product.Id, line.Quantity);
             }
         }
     }

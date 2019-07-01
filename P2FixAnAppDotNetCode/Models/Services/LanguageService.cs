@@ -18,16 +18,24 @@ namespace P2FixAnAppDotNetCode.Models.Services
         }
 
         /// <summary>
-        /// Set the culture
+        /// Set the culture 
         /// </summary>
+        /// <param name="language">The language whose corresponding culture will be set</param>
+        /// <returns>A string value representing a culture. This value defaults to "en" 
+        /// if an invalid argument is passed.</returns>
         // JON KARLSEN: 
-        // Implemented this method. As the incoming string values are hard-coded
-        // and the method defaults to English, there is no need for validation. 
+        // Implemented the method
         public string SetCulture(string language)
         {
+            // Default to English/en if language arg is null
+            if (language == null)
+            {
+                return "en";
+            }
+
             string culture;
 
-            // Default language is "en", french is "fr" and spanish is "es".
+            // Default culture is "en", french is "fr" and spanish is "es".
             if (language == "French") 
                     culture = "fr";
             else if (language == "Spanish")

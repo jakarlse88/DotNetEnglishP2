@@ -10,6 +10,8 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
 
         void UpdateProductStocks(int productId, int quantityToRemove);
 
+        // JON KARLSEN:
+        // Add here since method is now implemented in the repository
         Product GetProductById(int id);
     }
 }
